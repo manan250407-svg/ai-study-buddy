@@ -1,0 +1,81 @@
+:root {
+  --bg: #f5f7fb; --card: #ffffff; --text: #1d2433; --muted: #6b7488;
+  --primary: #5b5bf0; --primary-2: #8a5cf6; --border: #e3e7f0;
+  --good: #1fa971; --bad: #e5484d; --shadow: 0 8px 30px rgba(30, 40, 90, .08);
+}
+[data-theme="dark"] {
+  --bg: #0f1220; --card: #181c2e; --text: #e8ebf5; --muted: #98a0b8;
+  --border: #272d47; --shadow: 0 8px 30px rgba(0, 0, 0, .35);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg); color: var(--text); transition: background .3s, color .3s;
+}
+.top {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; max-width: 900px; margin: 0 auto;
+}
+.brand { font-weight: 700; font-size: 1.15rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 16px 40px; }
+.hero { text-align: center; padding: 18px 0 8px; }
+.hero h1 { font-size: clamp(1.4rem, 4vw, 2.1rem); margin: 0 0 8px; }
+.hero p { color: var(--muted); margin: 0; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 18px; margin-top: 18px; box-shadow: var(--shadow);
+}
+textarea, input {
+  width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--text); font: inherit; resize: vertical;
+}
+textarea:focus, input:focus { outline: 2px solid var(--primary); }
+.row { display: flex; gap: 10px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+.row .primary { margin-left: auto; }
+.muted { color: var(--muted); font-size: .9rem; }
+button { font: inherit; cursor: pointer; border-radius: 10px; border: 0; padding: 10px 16px; }
+.primary { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; font-weight: 600; }
+.primary:hover { filter: brightness(1.08); }
+.primary:disabled { opacity: .6; cursor: wait; }
+.ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.api { margin-top: 12px; }
+.api summary { cursor: pointer; color: var(--primary); font-weight: 600; }
+.hidden { display: none !important; }
+.tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+.tab { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+.tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.badge { margin-left: auto; font-size: .8rem; color: var(--muted); }
+.panel ul { padding-left: 20px; line-height: 1.7; }
+.q { border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.q p { margin: 0 0 10px; font-weight: 600; }
+.opt {
+  display: block; width: 100%; text-align: left; margin: 6px 0; padding: 10px 12px;
+  background: var(--bg); color: var(--text); border: 1px solid var(--border);
+}
+.opt:hover:not(:disabled) { border-color: var(--primary); }
+.opt.correct { background: rgba(31, 169, 113, .18); border-color: var(--good); }
+.opt.wrong { background: rgba(229, 72, 77, .18); border-color: var(--bad); }
+.score { font-weight: 700; margin-bottom: 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.flip { perspective: 900px; height: 170px; cursor: pointer; }
+.flip-inner {
+  position: relative; width: 100%; height: 100%; transition: transform .5s; transform-style: preserve-3d;
+}
+.flip.on .flip-inner { transform: rotateY(180deg); }
+.face {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: 14px; padding: 16px;
+  display: flex; align-items: center; justify-content: center; text-align: center; overflow: auto;
+  border: 1px solid var(--border); font-size: .95rem;
+}
+.front { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; font-weight: 600; }
+.back { background: var(--bg); transform: rotateY(180deg); }
+footer { text-align: center; color: var(--muted); padding: 20px; font-size: .85rem; }
+.greet { font-size: 1.05rem; margin: 0 0 6px; color: var(--primary); font-weight: 600; }
+.toast {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%);
+  background: var(--text); color: var(--bg); padding: 12px 18px; border-radius: 12px;
+  box-shadow: var(--shadow); max-width: 90vw; text-align: center; z-index: 10;
+  animation: pop .25s ease;
+}
+@keyframes pop { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@media (max-width: 520px) { .row .primary { width: 100%; margin-left: 0; } }

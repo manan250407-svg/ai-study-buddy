@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Study Buddy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">📚 <span>AI Study Buddy</span></div>
+    <button id="themeBtn" class="ghost" aria-label="Toggle dark mode">🌙</button>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p id="greet" class="greet">Hey there 👋</p>
+      <h1>Stop re-reading. Start remembering.</h1>
+      <p>Drop in your messy notes and I'll turn them into a quick summary, a mini quiz and flashcards. No sign-up, no fuss.</p>
+    </section>
+
+    <section class="card">
+      <textarea id="notes" rows="9" placeholder="Paste your notes here... messy is totally fine, I won't judge 😄"></textarea>
+      <div class="row">
+        <button id="sampleBtn" class="ghost">Show me an example</button>
+        <button id="clearBtn" class="ghost">Clear</button>
+        <span id="count" class="muted">0 words</span>
+        <button id="genBtn" class="primary">✨ Make my study kit</button>
+      </div>
+      <details class="api">
+        <summary>Want smarter questions? Add a Gemini key (optional)</summary>
+        <p class="muted">Grab a free key from Google AI Studio. It never leaves your browser, promise.</p>
+        <input id="apiKey" type="password" placeholder="Paste Gemini API key" />
+      </details>
+    </section>
+
+    <section id="results" class="card hidden">
+      <div class="tabs">
+        <button class="tab active" data-tab="summary">Summary</button>
+        <button class="tab" data-tab="quiz">Quiz</button>
+        <button class="tab" data-tab="cards">Flashcards</button>
+        <span id="modeBadge" class="badge"></span>
+      </div>
+      <div id="summary" class="panel"></div>
+      <div id="quiz" class="panel hidden"></div>
+      <div id="cards" class="panel hidden"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <footer>Made with ☕ by Manan Sharma, ABES EC · PromptWars x Agent X 2.0</footer>
+  <script src="script.js"></script>
+</body>
+</html>
